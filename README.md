@@ -1,2 +1,11 @@
-# landing_page
-Practicing to make a real functional landing page
+#App que crea playlists según tu estado de ánimo
+
+Nombre: MoodWave
+
+Secciones:
+
+Hero interactivo
+Selección de emociones
+Ejemplos de playlists
+Estadísticas
+Descarga la app
