@@ -4,8 +4,12 @@ Nombre: MoodWave
 
 Secciones:
 
-Hero interactivo
+Interactivo
+
 Selección de emociones
+
 Ejemplos de playlists
+
 Estadísticas
+
 Descarga la app
