@@ -1,4 +1,4 @@
-#App que crea playlists según tu estado de ánimo
+# App que crea playlists según tu estado de ánimo
 
 Nombre: MoodWave
 
