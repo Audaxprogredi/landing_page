@@ -1,183 +1,386 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mi Landing Page</title>
-
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pulse — Crea playlists con vibra Neon Mint</title>
+<meta name="description" content="Pulse es la app para crear, mezclar y compartir playlists con un estilo Neon Mint vibrante." />
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0d1b2a; --bg2:#0a1622; --surface:#11263a;
+    --mint:#2dd4a8; --mint2:#73ffb8; --ink:#e6fff5; --muted:#8aa3b2;
+  }
+  html,body{background:var(--bg); color:var(--ink); font-family:'Inter',sans-serif;}
+  h1,h2,h3,.font-display{font-family:'Space Grotesk',sans-serif; letter-spacing:-0.02em;}
+  .text-mint{color:var(--mint);} .bg-mint{background:var(--mint);} .bg-surface{background:var(--surface);}
+  .border-mint{border-color:var(--mint);}
+  .grad-text{background:linear-gradient(135deg,#73ffb8,#2dd4a8 60%,#1b4332); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .grad-bg{background:radial-gradient(1200px 600px at 80% -10%, rgba(45,212,168,.25), transparent 60%), radial-gradient(800px 400px at 0% 10%, rgba(115,255,184,.15), transparent 60%), var(--bg);}
+  .glow{box-shadow:0 0 0 1px rgba(45,212,168,.25), 0 20px 60px -20px rgba(45,212,168,.45);}
+  .btn-primary{background:linear-gradient(135deg,#2dd4a8,#73ffb8); color:#06241a; transition:transform .2s, box-shadow .3s;}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 15px 40px -10px rgba(45,212,168,.6);}
+  .btn-ghost{border:1px solid rgba(115,255,184,.3); color:var(--ink); transition:all .2s;}
+  .btn-ghost:hover{border-color:var(--mint2); background:rgba(45,212,168,.08);}
+  .card{background:linear-gradient(180deg, rgba(45,212,168,.06), rgba(255,255,255,.01)); border:1px solid rgba(115,255,184,.08); transition:transform .3s, border-color .3s, box-shadow .3s;}
+  .card:hover{transform:translateY(-4px); border-color:rgba(45,212,168,.35); box-shadow:0 25px 50px -25px rgba(45,212,168,.4);}
+  .pill{background:rgba(45,212,168,.1); color:var(--mint2); border:1px solid rgba(45,212,168,.25);}
+  .eq span{display:inline-block; width:3px; margin:0 1px; background:var(--mint); border-radius:2px; animation:eq 1s ease-in-out infinite;}
+  .eq span:nth-child(2){animation-delay:.15s} .eq span:nth-child(3){animation-delay:.3s} .eq span:nth-child(4){animation-delay:.45s}
+  @keyframes eq{0%,100%{height:6px}50%{height:18px}}
+  .float{animation:float 6s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  .pulse-ring{animation:pr 2.5s ease-out infinite}
+  @keyframes pr{0%{box-shadow:0 0 0 0 rgba(45,212,168,.6)}100%{box-shadow:0 0 0 30px rgba(45,212,168,0)}}
+  details[open] summary .chev{transform:rotate(180deg)}
+  .chev{transition:transform .2s}
+  .track:hover .play{opacity:1; transform:scale(1)}
+  .play{opacity:0; transform:scale(.8); transition:all .2s}
+  ::selection{background:rgba(45,212,168,.4); color:#fff}
+</style>
 </head>
+<body class="grad-bg min-h-screen">
 
-  <body>
-  </section>
-
-  <div id="toast-interactive" ... > </div>
-    <nav class="bg-neutral-primary fixed w-full z-20 top-0 start-0 border-b border-default">
-      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="https://flowbite.com/docs/images/logo.svg" class="h-7" alt="Flowbite Logo" />
-            <span class="self-center text-xl text-heading font-semibold whitespace-nowrap">Flowbite</span>
-        </a>
-        <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary" aria-controls="navbar-default" aria-expanded="false">
-            <span class="sr-only">Open main menu</span>
-            <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/></svg>
-        </button>
-        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary">
-            <li>
-              <a href="#" class="block py-2 px-3 text-white bg-brand rounded md:bg-transparent md:text-fg-brand md:p-0" aria-current="page">Home</a>
-            </li>
-            <li>
-              <a href="#" class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent">About</a>
-            </li>
-            <li>
-              <a href="#" class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent">Services</a>
-            </li>
-            <li>
-              <a href="#" class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent">Pricing</a>
-            </li>
-            <li>
-              <a href="#" class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
+<!-- NAV -->
+<header class="sticky top-0 z-50 backdrop-blur-xl bg-[#0d1b2a]/70 border-b border-white/5">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2">
+      <div class="w-9 h-9 rounded-xl bg-mint flex items-center justify-center text-[#06241a] font-bold pulse-ring">P</div>
+      <span class="font-display text-xl font-bold">Pulse</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm text-[var(--muted)]">
+      <a href="#features" class="hover:text-mint transition">Funciones</a>
+      <a href="#create" class="hover:text-mint transition">Crear</a>
+      <a href="#library" class="hover:text-mint transition">Biblioteca</a>
+      <a href="#pricing" class="hover:text-mint transition">Planes</a>
+      <a href="#faq" class="hover:text-mint transition">FAQ</a>
     </nav>
+    <div class="flex items-center gap-3">
+      <a href="#" class="hidden sm:block text-sm text-[var(--muted)] hover:text-mint">Entrar</a>
+      <a href="#create" class="btn-primary px-4 py-2 rounded-full text-sm font-semibold">Empezar gratis</a>
+    </div>
+  </div>
+</header>
 
-    <main class="bg-slate-50 dark:bg-gray-900 min-h-screen">
-      
-      <div id="container-01"
-        class="mx-auto px-4 py-20 text-center">
-
-        <h1
-          class="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-          Tu presencia digital comienza aquí
-        </h1>
-
-        <p
-          class="mt-6 text-lg leading-relaxed text-gray-600 max-w-2xl mx-auto dark:text-gray-300">
-          Creamos experiencias web atractivas y rápidas con Tailwind CSS 4.1.
-          Dale vida a tus ideas con un diseño moderno y responsivo.
-        </p>
-
-        <div id="container-02"
-          class="mt-8 flex justify-center gap-4">
-
-          <button id="start"
-            class="inline-block px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700">
-            Comenzar
-          </button>
-
-          <button id="demo"
-            class="inline-block px-6 py-3 border border-gray-300 text-gray-700 rounded-lg dark:border-gray-600 dark:text-white">
-            Ver demo
-          </button>
-
-        </div>
-
+<!-- HERO -->
+<section class="relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 pt-20 pb-28 grid lg:grid-cols-2 gap-12 items-center">
+    <div>
+      <span class="pill inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-6">
+        <span class="eq inline-flex items-end h-5"><span></span><span></span><span></span><span></span></span>
+        Nuevo · Mezclas con IA
+      </span>
+      <h1 class="font-display text-5xl md:text-7xl font-bold leading-[1.05] mb-6">
+        Crea playlists<br/>con <span class="grad-text">vibra neón</span>.
+      </h1>
+      <p class="text-lg text-[var(--muted)] max-w-lg mb-8">
+        Pulse combina tus canciones favoritas en mezclas perfectas. Arrastra, suelta y comparte en segundos — sin distracciones.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="#create" class="btn-primary px-6 py-3 rounded-full font-semibold">Crear mi primera playlist</a>
+        <a href="#features" class="btn-ghost px-6 py-3 rounded-full font-semibold">Ver cómo funciona</a>
       </div>
+      <div class="mt-10 flex items-center gap-6 text-sm text-[var(--muted)]">
+        <div class="flex -space-x-2">
+          <div class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-300 to-emerald-600 border-2 border-[#0d1b2a]"></div>
+          <div class="w-8 h-8 rounded-full bg-gradient-to-br from-teal-300 to-cyan-700 border-2 border-[#0d1b2a]"></div>
+          <div class="w-8 h-8 rounded-full bg-gradient-to-br from-lime-300 to-emerald-700 border-2 border-[#0d1b2a]"></div>
+          <div class="w-8 h-8 rounded-full bg-gradient-to-br from-mint to-cyan-400 border-2 border-[#0d1b2a]"></div>
+        </div>
+        <span>+12,400 creadores activos</span>
+      </div>
+    </div>
 
-      <section class="bg-white dark:bg-gray-900">
-        <div id="container-03" class="px-4 py-8 mx-auto max-w-md md:max-w-xl">
-          <div id="container-04" class="grid grid-cols-2 gap-4 md:grid-cols-4">
-            <img src="https://placehold.co/50" alt="Imagen 1" class="w-full h-auto rounded">
-            <img src="https://placehold.co/50" alt="Imagen 2" class="w-full h-auto rounded">
-            <img src="https://placehold.co/50" alt="Imagen 3" class="w-full h-auto rounded">
-            <img src="https://placehold.co/50" alt="Imagen 4" class="w-full h-auto rounded">
+    <!-- Player mockup -->
+    <div class="relative float">
+      <div class="absolute -inset-6 bg-mint/20 blur-3xl rounded-full"></div>
+      <div class="relative card rounded-3xl p-6 glow">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-[#2dd4a8] to-[#1b4332] flex items-center justify-center text-4xl">🎧</div>
+          <div class="flex-1">
+            <p class="text-xs uppercase tracking-widest text-mint">Reproduciendo mezcla</p>
+            <h3 class="font-display text-2xl font-bold">Midnight Mint</h3>
+            <p class="text-sm text-[var(--muted)]">24 canciones · 1h 32m</p>
+          </div>
+          <button class="w-12 h-12 rounded-full bg-mint text-[#06241a] flex items-center justify-center hover:scale-110 transition">▶</button>
+        </div>
+        <div class="space-y-2">
+          <div class="track flex items-center gap-3 p-3 rounded-xl hover:bg-white/5">
+            <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-400 to-emerald-600 relative">
+              <span class="play absolute inset-0 flex items-center justify-center text-[#06241a]">▶</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium truncate">Neon Bloom</p>
+              <p class="text-xs text-[var(--muted)] truncate">Ava Lights</p>
+            </div>
+            <span class="text-xs text-[var(--muted)]">3:24</span>
+          </div>
+          <div class="track flex items-center gap-3 p-3 rounded-xl bg-mint/10 border border-mint/20">
+            <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-teal-600 flex items-center justify-center">
+              <span class="eq inline-flex items-end h-5"><span></span><span></span><span></span><span></span></span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium truncate text-mint">Mint Horizon</p>
+              <p class="text-xs text-[var(--muted)] truncate">Kosei Wave</p>
+            </div>
+            <span class="text-xs text-mint">2:47</span>
+          </div>
+          <div class="track flex items-center gap-3 p-3 rounded-xl hover:bg-white/5">
+            <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-400 to-cyan-700 relative">
+              <span class="play absolute inset-0 flex items-center justify-center text-[#06241a]">▶</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium truncate">Glow Drift</p>
+              <p class="text-xs text-[var(--muted)] truncate">Lume</p>
+            </div>
+            <span class="text-xs text-[var(--muted)]">4:11</span>
+          </div>
+          <div class="track flex items-center gap-3 p-3 rounded-xl hover:bg-white/5">
+            <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-lime-400 to-emerald-700 relative">
+              <span class="play absolute inset-0 flex items-center justify-center text-[#06241a]">▶</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium truncate">After Hours</p>
+              <p class="text-xs text-[var(--muted)] truncate">Sable</p>
+            </div>
+            <span class="text-xs text-[var(--muted)]">3:58</span>
           </div>
         </div>
-      <div id="toast-interactive"
-        class="hidden fixed right-5 bottom-5 flex items-center w-full max-w-xs p-4 space-x-4 text-gray-500 bg-white divide-x divide-gray-200 rounded-lg shadow-sm dark:text-gray-400 dark:divide-gray-700 dark:bg-gray-800"
-        role="alert">
-        <div class="flex">
-            <!-- Content -->
-            <div class="ms-3 text-sm font-normal">
-                <span class="mb-1 text-sm font-semibold text-gray-900 dark:text-white">Suscríbete ahora</span>
-                <div class="mb-2">Suscríbete ahora para obtener beneficios pro de música ilimitada con mucha felicidad.</div>
-                <div class="grid grid-cols-2 gap-2">
-                <div>
-                    <a href="#"
-                    class="inline-flex justify-center w-full px-2 py-1.5 text-xs font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800">Sí, quiero</a>
-                </div>
-                <div>
-                    <a href="#"
-                    class="inline-flex justify-center w-full px-2 py-1.5 text-xs font-medium text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-600 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">No ahora</a>
-                </div>
-                </div>
-            </div>
-
-            <!-- Close button -->
-            <button type="button"
-                class="ms-auto -mx-1.5 -my-1.5 p-1.5 inline-flex items-center justify-center w-8 h-8 text-gray-400 bg-white rounded-lg hover:text-gray-900 hover:bg-gray-100 focus:ring-2 focus:ring-gray-300 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
-                data-dismiss-target="#toast-interactive" aria-label="Close">
-                <span class="sr-only">Cerrar</span>
-                <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" aria-hidden="true">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                </svg>
-            </button>
-        </div>
-        
       </div>
-        <section class="bg-slate-50 dark:bg-gray-900">
+    </div>
+  </div>
+</section>
 
-            <div id="container-05" class="px-4 pt-8 mx-auto max-w-md md:max-w-xl">
-                <div class="grid grid-cols-1 gap-4 md:grid-cols-1">
-                    <h2 class="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white text-center">Productos más
-                    vendidos</h2>
-                </div>
-            </div>
+<!-- STATS -->
+<section class="border-y border-white/5 bg-[#0a1622]/60">
+  <div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+    <div><p class="font-display text-3xl font-bold text-mint">2.4M+</p><p class="text-xs text-[var(--muted)] mt-1">Canciones</p></div>
+    <div><p class="font-display text-3xl font-bold text-mint">180K</p><p class="text-xs text-[var(--muted)] mt-1">Playlists creadas</p></div>
+    <div><p class="font-display text-3xl font-bold text-mint">99.9%</p><p class="text-xs text-[var(--muted)] mt-1">Uptime</p></div>
+    <div><p class="font-display text-3xl font-bold text-mint">4.9★</p><p class="text-xs text-[var(--muted)] mt-1">Valoración</p></div>
+  </div>
+</section>
 
-            <div id="container-06" class="max-w-4xl pt-8 mx-auto">
-                <form class="max-w-sm mx-auto">
-                    <select id="categories"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>Seleccione una categoría</option>
-                    <option value="1">Category01</option>
-                    <option value="2">Category02</option>
-                    <option value="3">Category03</option>
-                    </select>
-                </form>
-            </div>
+<!-- FEATURES -->
+<section id="features" class="max-w-7xl mx-auto px-6 py-24">
+  <div class="max-w-2xl mb-14">
+    <p class="text-mint text-sm uppercase tracking-widest mb-3">Por qué Pulse</p>
+    <h2 class="font-display text-4xl md:text-5xl font-bold">Diseñado para que tu música <span class="grad-text">fluya</span>.</h2>
+  </div>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="card rounded-2xl p-8">
+      <div class="w-12 h-12 rounded-xl bg-mint/15 text-mint flex items-center justify-center text-2xl mb-5">⚡</div>
+      <h3 class="font-display text-xl font-bold mb-2">Mezclas instantáneas</h3>
+      <p class="text-sm text-[var(--muted)]">Genera playlists por estado de ánimo, BPM o género en menos de un segundo.</p>
+    </div>
+    <div class="card rounded-2xl p-8">
+      <div class="w-12 h-12 rounded-xl bg-mint/15 text-mint flex items-center justify-center text-2xl mb-5">🎚️</div>
+      <h3 class="font-display text-xl font-bold mb-2">Control total</h3>
+      <p class="text-sm text-[var(--muted)]">Arrastra, reordena, sustituye. Edita cada playlist como un DJ profesional.</p>
+    </div>
+    <div class="card rounded-2xl p-8">
+      <div class="w-12 h-12 rounded-xl bg-mint/15 text-mint flex items-center justify-center text-2xl mb-5">🔗</div>
+      <h3 class="font-display text-xl font-bold mb-2">Comparte al instante</h3>
+      <p class="text-sm text-[var(--muted)]">Un enlace, todas las plataformas. Sin registros para tus amigos.</p>
+    </div>
+    <div class="card rounded-2xl p-8">
+      <div class="w-12 h-12 rounded-xl bg-mint/15 text-mint flex items-center justify-center text-2xl mb-5">🤖</div>
+      <h3 class="font-display text-xl font-bold mb-2">IA que te entiende</h3>
+      <p class="text-sm text-[var(--muted)]">Recomendaciones basadas en lo que realmente escuchas, no en lo que la marca quiere vender.</p>
+    </div>
+    <div class="card rounded-2xl p-8">
+      <div class="w-12 h-12 rounded-xl bg-mint/15 text-mint flex items-center justify-center text-2xl mb-5">🌙</div>
+      <h3 class="font-display text-xl font-bold mb-2">Modo enfoque</h3>
+      <p class="text-sm text-[var(--muted)]">Interfaz oscura, mínima distracción. Tu música, tu zona.</p>
+    </div>
+    <div class="card rounded-2xl p-8">
+      <div class="w-12 h-12 rounded-xl bg-mint/15 text-mint flex items-center justify-center text-2xl mb-5">☁️</div>
+      <h3 class="font-display text-xl font-bold mb-2">Sin instalaciones</h3>
+      <p class="text-sm text-[var(--muted)]">Funciona en cualquier navegador. Tus listas, sincronizadas siempre.</p>
+    </div>
+  </div>
+</section>
 
-            <div id="container-07" class="max-w-4xl pt-5 pb-5 mx-auto">
-                <div id="products-container" class="grid grid-cols-1 md:grid-cols-3 gap-3 p-6">
+<!-- CREATE -->
+<section id="create" class="bg-[#0a1622]/60 border-y border-white/5">
+  <div class="max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-12 items-center">
+    <div class="card rounded-3xl p-8">
+      <p class="text-xs uppercase tracking-widest text-mint mb-3">Editor en vivo</p>
+      <h3 class="font-display text-2xl font-bold mb-6">Nueva playlist</h3>
+      <input value="Lluvia & Lo-Fi" class="w-full bg-[#0d1b2a] border border-white/10 rounded-xl px-4 py-3 mb-4 focus:outline-none focus:border-mint" />
+      <div class="flex gap-2 mb-6 flex-wrap">
+        <span class="pill px-3 py-1 rounded-full text-xs">Chill</span>
+        <span class="pill px-3 py-1 rounded-full text-xs">80 BPM</span>
+        <span class="pill px-3 py-1 rounded-full text-xs">Noche</span>
+        <span class="pill px-3 py-1 rounded-full text-xs">+ etiqueta</span>
+      </div>
+      <div class="space-y-2 mb-6">
+        <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5"><span class="text-[var(--muted)] text-xs w-4">1</span><div class="w-9 h-9 rounded-lg bg-gradient-to-br from-teal-400 to-emerald-700"></div><div class="flex-1"><p class="text-sm font-medium">Lluvia Suave</p><p class="text-xs text-[var(--muted)]">Río Norte</p></div><button class="text-[var(--muted)] hover:text-mint">⋯</button></div>
+        <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5"><span class="text-[var(--muted)] text-xs w-4">2</span><div class="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-400 to-teal-700"></div><div class="flex-1"><p class="text-sm font-medium">Madrugada</p><p class="text-xs text-[var(--muted)]">Yuna Beats</p></div><button class="text-[var(--muted)] hover:text-mint">⋯</button></div>
+        <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5"><span class="text-[var(--muted)] text-xs w-4">3</span><div class="w-9 h-9 rounded-lg bg-gradient-to-br from-emerald-400 to-cyan-700"></div><div class="flex-1"><p class="text-sm font-medium">Café Tibio</p><p class="text-xs text-[var(--muted)]">Lume</p></div><button class="text-[var(--muted)] hover:text-mint">⋯</button></div>
+      </div>
+      <button class="btn-primary w-full py-3 rounded-xl font-semibold">Guardar playlist</button>
+    </div>
 
-                    <!-- Products Card -->
-                    <div class="animate-pulse space-y-4 bg-white dark:bg-gray-800 p-4 rounded-2xl shadow">
-                        <div class="w-full h-40 bg-gray-300 dark:bg-gray-700 rounded-lg"></div>
-                        <div class="h-6 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
-                        <div class="h-5 bg-gray-300 dark:bg-gray-700 rounded w-1/2"></div>
-                        <div class="space-y-2">
-                            <div class="h-6 bg-gray-300 dark:bg-gray-700 rounded w-full"></div>
-                        </div>
-                    </div>
+    <div>
+      <p class="text-mint text-sm uppercase tracking-widest mb-3">Cómo funciona</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold mb-8">Tres pasos. Cero fricción.</h2>
+      <ol class="space-y-6">
+        <li class="flex gap-4">
+          <span class="shrink-0 w-10 h-10 rounded-full bg-mint text-[#06241a] font-bold flex items-center justify-center">1</span>
+          <div><h4 class="font-display text-lg font-bold mb-1">Elige tu vibra</h4><p class="text-sm text-[var(--muted)]">Selecciona géneros, ritmo o estado de ánimo. Pulse aprende de ti.</p></div>
+        </li>
+        <li class="flex gap-4">
+          <span class="shrink-0 w-10 h-10 rounded-full bg-mint text-[#06241a] font-bold flex items-center justify-center">2</span>
+          <div><h4 class="font-display text-lg font-bold mb-1">Construye tu lista</h4><p class="text-sm text-[var(--muted)]">Añade canciones manualmente o deja que la IA proponga la mezcla perfecta.</p></div>
+        </li>
+        <li class="flex gap-4">
+          <span class="shrink-0 w-10 h-10 rounded-full bg-mint text-[#06241a] font-bold flex items-center justify-center">3</span>
+          <div><h4 class="font-display text-lg font-bold mb-1">Comparte y disfruta</h4><p class="text-sm text-[var(--muted)]">Un link, un QR o exporta a tu app favorita. Listo.</p></div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
 
-                    <!-- Products Card -->
-                    <div class="animate-pulse space-y-4 bg-white dark:bg-gray-800 p-4 rounded-2xl shadow">
-                        <div class="w-full h-40 bg-gray-300 dark:bg-gray-700 rounded-lg"></div>
-                        <div class="h-6 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
-                        <div class="h-5 bg-gray-300 dark:bg-gray-700 rounded w-1/2"></div>
-                        <div class="space-y-2">
-                            <div class="h-6 bg-gray-300 dark:bg-gray-700 rounded w-full"></div>
-                        </div>
-                    </div>
+<!-- LIBRARY -->
+<section id="library" class="max-w-7xl mx-auto px-6 py-24">
+  <div class="flex items-end justify-between mb-10 flex-wrap gap-4">
+    <div>
+      <p class="text-mint text-sm uppercase tracking-widest mb-3">Biblioteca destacada</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold">Mezclas que están sonando</h2>
+    </div>
+    <a href="#" class="text-sm text-mint hover:underline">Ver todo →</a>
+  </div>
+  <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-5">
+    <article class="card rounded-2xl p-4 group">
+      <div class="aspect-square rounded-xl bg-gradient-to-br from-teal-400 to-emerald-700 mb-4 relative overflow-hidden">
+        <button class="absolute bottom-3 right-3 w-11 h-11 rounded-full bg-mint text-[#06241a] flex items-center justify-center opacity-0 group-hover:opacity-100 transition shadow-lg">▶</button>
+      </div>
+      <h3 class="font-display font-bold">Midnight Mint</h3><p class="text-xs text-[var(--muted)]">24 tracks · Chill</p>
+    </article>
+    <article class="card rounded-2xl p-4 group">
+      <div class="aspect-square rounded-xl bg-gradient-to-br from-cyan-400 to-teal-700 mb-4 relative overflow-hidden">
+        <button class="absolute bottom-3 right-3 w-11 h-11 rounded-full bg-mint text-[#06241a] flex items-center justify-center opacity-0 group-hover:opacity-100 transition shadow-lg">▶</button>
+      </div>
+      <h3 class="font-display font-bold">Neon Cardio</h3><p class="text-xs text-[var(--muted)]">38 tracks · Workout</p>
+    </article>
+    <article class="card rounded-2xl p-4 group">
+      <div class="aspect-square rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-700 mb-4 relative overflow-hidden">
+        <button class="absolute bottom-3 right-3 w-11 h-11 rounded-full bg-mint text-[#06241a] flex items-center justify-center opacity-0 group-hover:opacity-100 transition shadow-lg">▶</button>
+      </div>
+      <h3 class="font-display font-bold">Focus Lab</h3><p class="text-xs text-[var(--muted)]">52 tracks · Estudio</p>
+    </article>
+    <article class="card rounded-2xl p-4 group">
+      <div class="aspect-square rounded-xl bg-gradient-to-br from-lime-400 to-emerald-700 mb-4 relative overflow-hidden">
+        <button class="absolute bottom-3 right-3 w-11 h-11 rounded-full bg-mint text-[#06241a] flex items-center justify-center opacity-0 group-hover:opacity-100 transition shadow-lg">▶</button>
+      </div>
+      <h3 class="font-display font-bold">Glow Drive</h3><p class="text-xs text-[var(--muted)]">19 tracks · Road</p>
+    </article>
+  </div>
+</section>
 
-                    <!-- Products Card -->
-                    <div class="animate-pulse space-y-4 bg-white dark:bg-gray-800 p-4 rounded-2xl shadow">
-                        <div class="w-full h-40 bg-gray-300 dark:bg-gray-700 rounded-lg"></div>
-                        <div class="h-6 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
-                        <div class="h-5 bg-gray-300 dark:bg-gray-700 rounded w-1/2"></div>
-                        <div class="space-y-2">
-                            <div class="h-6 bg-gray-300 dark:bg-gray-700 rounded w-full"></div>
-                        </div>
-                    </div>
+<!-- PRICING -->
+<section id="pricing" class="bg-[#0a1622]/60 border-y border-white/5">
+  <div class="max-w-7xl mx-auto px-6 py-24">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <p class="text-mint text-sm uppercase tracking-widest mb-3">Planes</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold">Empieza gratis. <span class="grad-text">Crece sin límites.</span></h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="card rounded-2xl p-8">
+        <h3 class="font-display text-xl font-bold mb-2">Free</h3>
+        <p class="text-sm text-[var(--muted)] mb-6">Para empezar a crear.</p>
+        <p class="font-display text-4xl font-bold mb-6">$0<span class="text-base text-[var(--muted)] font-normal">/mes</span></p>
+        <ul class="space-y-2 text-sm text-[var(--muted)] mb-8">
+          <li>✓ 5 playlists</li><li>✓ Mezcla básica</li><li>✓ Compartir por enlace</li>
+        </ul>
+        <button class="btn-ghost w-full py-3 rounded-xl font-semibold">Empezar</button>
+      </div>
+      <div class="card rounded-2xl p-8 border-mint glow relative">
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 pill px-3 py-1 rounded-full text-xs">Más popular</span>
+        <h3 class="font-display text-xl font-bold mb-2 text-mint">Pro</h3>
+        <p class="text-sm text-[var(--muted)] mb-6">Para creadores de vibras.</p>
+        <p class="font-display text-4xl font-bold mb-6">$6<span class="text-base text-[var(--muted)] font-normal">/mes</span></p>
+        <ul class="space-y-2 text-sm text-[var(--muted)] mb-8">
+          <li>✓ Playlists ilimitadas</li><li>✓ IA avanzada</li><li>✓ Exportar a todas las apps</li><li>✓ Sin anuncios</li>
+        </ul>
+        <button class="btn-primary w-full py-3 rounded-xl font-semibold">Probar Pro</button>
+      </div>
+      <div class="card rounded-2xl p-8">
+        <h3 class="font-display text-xl font-bold mb-2">Studio</h3>
+        <p class="text-sm text-[var(--muted)] mb-6">Para equipos y artistas.</p>
+        <p class="font-display text-4xl font-bold mb-6">$19<span class="text-base text-[var(--muted)] font-normal">/mes</span></p>
+        <ul class="space-y-2 text-sm text-[var(--muted)] mb-8">
+          <li>✓ Todo en Pro</li><li>✓ Colaboración en vivo</li><li>✓ Analítica de escucha</li><li>✓ API privada</li>
+        </ul>
+        <button class="btn-ghost w-full py-3 rounded-xl font-semibold">Contactar</button>
+      </div>
+    </div>
+  </div>
+</section>
 
-                </div>
-            </div>
-        </section>
-      <script src="./src/js/file01.js" type="module"></script>
-        
+<!-- FAQ -->
+<section id="faq" class="max-w-3xl mx-auto px-6 py-24">
+  <p class="text-mint text-sm uppercase tracking-widest mb-3 text-center">FAQ</p>
+  <h2 class="font-display text-4xl md:text-5xl font-bold text-center mb-12">Preguntas frecuentes</h2>
+  <div class="space-y-3">
+    <details class="card rounded-2xl p-6">
+      <summary class="flex justify-between items-center cursor-pointer font-display font-semibold">¿Necesito instalar algo? <span class="chev text-mint">▾</span></summary>
+      <p class="text-sm text-[var(--muted)] mt-3">No. Pulse funciona 100% en el navegador, en cualquier dispositivo.</p>
+    </details>
+    <details class="card rounded-2xl p-6">
+      <summary class="flex justify-between items-center cursor-pointer font-display font-semibold">¿Puedo importar mis listas de Spotify? <span class="chev text-mint">▾</span></summary>
+      <p class="text-sm text-[var(--muted)] mt-3">Sí, en el plan Pro puedes importar y exportar a Spotify, Apple Music y YouTube Music.</p>
+    </details>
+    <details class="card rounded-2xl p-6">
+      <summary class="flex justify-between items-center cursor-pointer font-display font-semibold">¿Cómo funciona la IA? <span class="chev text-mint">▾</span></summary>
+      <p class="text-sm text-[var(--muted)] mt-3">Analiza tempo, energía y armonía de tus tracks favoritos para sugerir canciones que encajen perfectamente.</p>
+    </details>
+    <details class="card rounded-2xl p-6">
+      <summary class="flex justify-between items-center cursor-pointer font-display font-semibold">¿Puedo cancelar cuando quiera? <span class="chev text-mint">▾</span></summary>
+      <p class="text-sm text-[var(--muted)] mt-3">Por supuesto. Sin permanencias ni letra pequeña.</p>
+    </details>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="max-w-7xl mx-auto px-6 pb-24">
+  <div class="card rounded-3xl p-12 md:p-16 text-center glow relative overflow-hidden">
+    <div class="absolute -top-20 -right-20 w-72 h-72 bg-mint/20 blur-3xl rounded-full"></div>
+    <div class="absolute -bottom-20 -left-20 w-72 h-72 bg-[#73ffb8]/15 blur-3xl rounded-full"></div>
+    <h2 class="relative font-display text-4xl md:text-6xl font-bold mb-4">Tu próxima playlist <span class="grad-text">te espera</span>.</h2>
+    <p class="relative text-[var(--muted)] mb-8 max-w-xl mx-auto">Únete a miles de creadores que ya están mezclando con Pulse.</p>
+    <a href="#create" class="relative btn-primary inline-block px-8 py-4 rounded-full font-semibold">Crear gratis ahora</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/5 bg-[#0a1622]">
+  <div class="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-4 gap-8 text-sm">
+    <div>
+      <div class="flex items-center gap-2 mb-4">
+        <div class="w-8 h-8 rounded-lg bg-mint flex items-center justify-center text-[#06241a] font-bold">P</div>
+        <span class="font-display text-lg font-bold">Pulse</span>
+      </div>
+      <p class="text-[var(--muted)]">Playlists con vibra neón, para todos.</p>
+    </div>
+    <div>
+      <h4 class="font-display font-bold mb-3">Producto</h4>
+      <ul class="space-y-2 text-[var(--muted)]"><li><a href="#" class="hover:text-mint">Funciones</a></li><li><a href="#" class="hover:text-mint">Planes</a></li><li><a href="#" class="hover:text-mint">Cambios</a></li></ul>
+    </div>
+    <div>
+      <h4 class="font-display font-bold mb-3">Empresa</h4>
+      <ul class="space-y-2 text-[var(--muted)]"><li><a href="#" class="hover:text-mint">Sobre</a></li><li><a href="#" class="hover:text-mint">Blog</a></li><li><a href="#" class="hover:text-mint">Contacto</a></li></ul>
+    </div>
+    <div>
+      <h4 class="font-display font-bold mb-3">Newsletter</h4>
+      <form class="flex gap-2"><input placeholder="tu@email.com" class="flex-1 bg-[#0d1b2a] border border-white/10 rounded-lg px-3 py-2 focus:outline-none focus:border-mint" /><button class="btn-primary px-4 rounded-lg font-semibold">→</button></form>
+    </div>
+  </div>
+  <div class="border-t border-white/5 py-6 text-center text-xs text-[var(--muted)]">© 2026 Pulse. Hecho con TailwindCSS.</div>
+</footer>
+
 </body>
 </html>
