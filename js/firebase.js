@@ -1,35 +1,71 @@
+// 1. Las importaciones SIEMPRE van hasta arriba en un módulo
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref, set, push, onValue } from "firebase/database";
 
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
-    import { getDatabase, ref, set, push, get, child } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
-  // Your web app's Firebase configuration
-
+console.log("¡Hola! Firebase.js está cargando correctamente.");
+console.log("ID del proyecto Vite:", import.meta.env.VITE_FIREBASE_PROJECT_ID);
+// 2. Configuración
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  apiKey: "AIzaSyCWiHiI5nnMjMU7r-x8H3oCFaqVI0hlA7s",
+  authDomain: "landing-ce40b.firebaseapp.com",
+  databaseURL: "https://landing-ce40b-default-rtdb.firebaseio.com",
+  projectId: "landing-ce40b",
+  storageBucket: "landing-ce40b.firebasestorage.app",
+  messagingSenderId: "456731771280",
+  appId: "1:456731771280:web:2d611f5cd24b37f6b3b315"
 };
 
-export let saveVote = async (productID) => {
-  try {
-    const votesRef = ref(db, 'votes');
-    const newUserRef = push(votesRef);
-    
-    let result = {
-      productID: productID,
-      date: new Date().toISOString()
-    };
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
-    await set(newUserRef, result);
-    return { status: 'success', message: 'Voto guardado exitosamente.' };
-  } catch (error) {
-    return { status: 'error', message: `Error al guardar el voto: ${error.message}` };
+// 3. Envolvemos todo en un evento para que sea una función válida
+document.addEventListener('DOMContentLoaded', () => {
+  
+  const form = document.getElementById('form-newsletter');
+  const emailInput = document.getElementById('infoenviar');
+  const contadorText = document.getElementById('contador-suscritos');
+
+  console.log("Elementos encontrados:", { form, emailInput, contadorText });
+
+  // Ahora este return SÍ es válido porque está dentro de la función de flecha () => {}
+  if (!form) {
+    console.error("ERROR: No se encontró el formulario con id 'form-newsletter'");
+    return;
   }
-};
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const database = getDatabase(app);
+
+  const suscripcionesRef = ref(database, 'suscriptores');
+
+  // --- ESCUCHAR CONTADOR ---
+  onValue(suscripcionesRef, (snapshot) => {
+    const data = snapshot.val();
+    const totalSuscritos = data ? Object.keys(data).length : 0;
+    
+    if (contadorText) {
+      contadorText.textContent = `${totalSuscritos} persona${totalSuscritos !== 1 ? 's' : ''} suscrita${totalSuscritos !== 1 ? 's' : ''}`;
+    }
+  });
+
+  // --- ENVIAR FORMULARIO ---
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault(); // ¡Ahora sí detendrá la recarga!
+    console.log("Interceptando el envío...");
+
+    const email = emailInput.value.trim();
+
+    if (email) {
+      try {
+        const nuevaSuscripcionRef = push(suscripcionesRef);
+        await set(nuevaSuscripcionRef, {
+          email: email,
+          fecha: new Date().toISOString()
+        });
+
+        emailInput.value = '';
+        console.log("¡Guardado exitoso!");
+        
+      } catch (error) {
+        console.error('Error al guardar en Firebase:', error);
+      }
+    }
+  });
+});
